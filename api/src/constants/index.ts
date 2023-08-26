@@ -1,0 +1,3 @@
+
+
+export {CORS} from './cors'
