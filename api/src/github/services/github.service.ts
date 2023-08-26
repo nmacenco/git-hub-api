@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
 import { Observable, firstValueFrom } from 'rxjs';
 import { convertDateFormat } from 'src/utils/functions';
+import { ErrorManager } from 'src/utils/error.manager';
 
 @Injectable()
 export class GithubService {
@@ -30,7 +30,8 @@ export class GithubService {
             return response;
             
         } catch (error) {
-            throw new Error(error)
+            
+            throw ErrorManager.createSignatureError(error.message , error.response.status)
         }
     }
 
