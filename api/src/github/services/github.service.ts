@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { AxiosResponse } from 'axios';
 import { Observable, firstValueFrom } from 'rxjs';
+import { convertDateFormat } from 'src/utils/functions';
 
 @Injectable()
 export class GithubService {
@@ -12,9 +13,21 @@ export class GithubService {
         const url = `https://api.github.com/repos/${owner}/${repo}/commits`;
 
         try {
-            const response = await firstValueFrom(this.httpService.get(url))
+            const {data} = await firstValueFrom(this.httpService.get(url))
+            
+            const response = await data.map( ({commit}) => {
+                
+                const mapedCommit = {
+                    name : commit.author.name,
+                    email : commit.author.email,
+                    date : convertDateFormat(commit.author.date), 
+                    message : commit.message
+                }
+                
+                return mapedCommit
+            })
 
-            return response.data;
+            return response;
             
         } catch (error) {
             throw new Error(error)
