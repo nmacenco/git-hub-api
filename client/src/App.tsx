@@ -3,12 +3,15 @@ import './App.css';
 
 import {BrowserRouter} from 'react-router-dom'
 import { AppRouter } from './Router';
+import { Container } from '@mui/material';
 
 function App() {
   return (
-    <BrowserRouter>
-      <AppRouter/>
-    </BrowserRouter>
+    <Container maxWidth='xl'>
+      <BrowserRouter>
+        <AppRouter/>
+      </BrowserRouter>
+    </Container>
   );
 }
 
