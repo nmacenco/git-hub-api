@@ -3,21 +3,22 @@ import "../../App.css";
 import { MediaCard, MediaCardProps } from "../../components/Card";
 import { Box, CircularProgress } from "@mui/material";
 import { gitHubInfo } from "../../api/github.api";
+import { useNavigate } from "react-router-dom";
 
 export const Profile: React.FC<{}> = () => {
+  const navigate = useNavigate();
   const [profileInfo, setProfileInfo] = useState<MediaCardProps | null>(null);
   const [spinner, setSpinner] = useState(true);
   useLayoutEffect(() => {
-    try {
       gitHubInfo.getProfileInfo().then((response) => {
         setProfileInfo(response.data);
+      })
+      .catch(()=>{
+        navigate('/error')
       })
       .finally(() => {
         setSpinner(false);
       });
-    } catch (error) {
-      console.log(error);
-    }
   }, []);
 
   return (

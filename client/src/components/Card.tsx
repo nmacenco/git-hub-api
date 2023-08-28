@@ -26,7 +26,7 @@ export const MediaCard: React.FC<MediaCardProps> = ({avatar , owner, name , prof
         <CardMedia
           sx={{ height: 140, width: 140, borderRadius: "50%" }}
           image={avatar}
-          title="green iguana"
+          title="profile image"
         />
         <Box sx={{ margin: "20px" }}>
           <Typography gutterBottom variant="h6" component="div">
