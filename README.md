@@ -83,7 +83,7 @@ to:
 
 3. In the client folder, start the frontend application:
 
-    - cd api
+    - cd client
     - npm run start
 
 
