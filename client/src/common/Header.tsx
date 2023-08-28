@@ -77,8 +77,8 @@ export default function DrawerAppBar(props: Props) {
           
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Link to={  item === 'Profile' ? '/' : `/${item.toLowerCase()}`}>
-                <Button key={item} sx={{ color: '#fff' }}>
+              <Link key={item} to={  item === 'Profile' ? '/' : `/${item.toLowerCase()}`}>
+                <Button sx={{ color: '#fff' }}>
                   {item}
                 </Button>
 
