@@ -50,12 +50,39 @@ export class GithubService {
     }
 
 
-//     // getLastCommit(): string {
-//     //     return 'getLastCommit!';
-//     // }
-//     // getOneCommit(): string {
-//     //     return 'getOneCommit';
-//     // }
+    async getRepoInfo(owner: string = 'nmacenco', repo: string = 'git-hub-api'): Promise<any> {
+        const url = `https://api.github.com/repos/${owner}/${repo}`;
+        
+        const requestOptions = {
+            headers: {
+              Authorization: `Bearer ${this.authToken}`,
+            },
+          };
+
+        try {
+            const {data}= await firstValueFrom(this.httpService.get(url, requestOptions))
+
+            const response = {
+                name : data.name, 
+                fullName : data.full_name, 
+                owner : data.owner.login, 
+                avatar : data.owner.avatar_url, 
+                profileUrl : data.owner.html_url, 
+                repoUrl : data.html_url, 
+                description : data.description, 
+                language: data.language
+
+            }
+
+            return response;
+            
+        } catch (error) {
+            
+            throw ErrorManager.createSignatureError(error.message , error.response.status)
+        }
+    }
+
+
 
 
 }
