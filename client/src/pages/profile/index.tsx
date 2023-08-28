@@ -2,12 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import '../../App.css';
 
-function About() {
+export const Profile : React.FC<{}> = () => {
   return (
     <div className="App">
-        <h1>About</h1>
+        <h1>Profile</h1>
     </div>
   );
 }
 
-export default About;

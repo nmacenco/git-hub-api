@@ -1,15 +1,14 @@
 
 
-import { Container } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { commits } from '../../api/github.api';
 import { FolderList } from '../../components/FolderList';
 
-export const Home : React.FC<{}> = () => {
+export const Commits : React.FC<{}> = () => {
 
   const [commitsList, setcommitsList] = useState([])
   useEffect(()=>{
-    console.log('pasa por aca? ');
     
     try {
       commits.getAll().then((response) =>{
@@ -25,11 +24,12 @@ export const Home : React.FC<{}> = () => {
   }, [])
   
   return (
-      <div>
-        {commitsList.length > 0 && <FolderList items= {commitsList}  />}
-        
-
-      </div>
+      <>
+        <Typography variant="h4" sx={{marginBottom : '15px'}}>Commit List:</Typography>
+        <Box sx={{display:'flex' , justifyContent: 'center' }} >
+          {commitsList.length > 0 && <FolderList items= {commitsList}  />}
+        </Box >
+      </>
 
   );
 }

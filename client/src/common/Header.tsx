@@ -20,7 +20,7 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ['Home', 'About'];
+const navItems = ['Profile', 'Commits'];
 
 export default function DrawerAppBar(props: Props) {
   const { window } = props;
@@ -77,7 +77,7 @@ export default function DrawerAppBar(props: Props) {
           
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Link to={`/${item.toLowerCase()}`}>
+              <Link to={  item === 'Profile' ? '/' : `/${item.toLowerCase()}`}>
                 <Button key={item} sx={{ color: '#fff' }}>
                   {item}
                 </Button>

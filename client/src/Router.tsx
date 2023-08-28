@@ -1,8 +1,8 @@
 import React from 'react';
 
 import {Routes , Route} from 'react-router-dom'
-import { Home } from './pages/home';
-import About from './pages/about';
+import { Commits } from './pages/commits';
+import { Profile } from './pages/profile';
 import { RouterLayout } from './common/RouterLayout';
 
 
@@ -11,9 +11,9 @@ export const AppRouter : React.FC<{}> = () => {
     return (
         <Routes>
             <Route path='/' element={<RouterLayout/>}>
-                <Route path='/home' element={<Home/>} />
-                <Route path='/about' element={<About/>} />
-                <Route path='/*' element={<Home/>} />
+                <Route path='/' element={<Profile/>} />
+                <Route path='/commits' element={<Commits/>} />
+                <Route path='/*' element={<Profile/>} />
             </Route>
         </Routes>
     )
