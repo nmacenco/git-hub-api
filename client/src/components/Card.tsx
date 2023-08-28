@@ -7,21 +7,33 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Box, Link } from "@mui/material";
 
-export const MediaCard: React.FC<any> = ({}) => {
+export interface MediaCardProps {
+    avatar: string , 
+    description: string | null  ,
+    fullName: string , 
+    language: string , 
+    name: string , 
+    owner: string , 
+    profileUrl: string , 
+    repoUrl: string , 
+
+}
+
+export const MediaCard: React.FC<MediaCardProps> = ({avatar , owner, name , profileUrl, repoUrl}) => {
   return (
     <Card sx={{ maxWidth: 400, padding: "20px", borderRadius: "5px" }}>
       <Box sx={{ display: "flex", alignItems: "center", justifyContent: "" }}>
         <CardMedia
           sx={{ height: 140, width: 140, borderRadius: "50%" }}
-          image="https://avatars.githubusercontent.com/u/86210605?v=4"
+          image={avatar}
           title="green iguana"
         />
         <Box sx={{ margin: "20px" }}>
           <Typography gutterBottom variant="h6" component="div">
-            nmacenco
+            {owner}
           </Typography>
           <Typography gutterBottom variant="h6" component="div">
-            git-hub-api
+            {name}
           </Typography>
         </Box>
       </Box>
@@ -31,10 +43,10 @@ export const MediaCard: React.FC<any> = ({}) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Link href="https://github.com/nmacenco" underline="none">
+        <Link href={profileUrl} underline="none">
           <Button size="small">Profile Link</Button>
         </Link>
-        <Link href="https://github.com/nmacenco/git-hub-api" underline="none">
+        <Link href={repoUrl} underline="none">
           <Button size="small">Repo Link</Button>
         </Link>
       </CardActions>

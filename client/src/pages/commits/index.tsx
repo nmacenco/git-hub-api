@@ -2,7 +2,7 @@
 
 import { Box, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { commits } from '../../api/github.api';
+import { gitHubInfo } from '../../api/github.api';
 import { FolderList } from '../../components/FolderList';
 
 export const Commits : React.FC<{}> = () => {
@@ -11,9 +11,7 @@ export const Commits : React.FC<{}> = () => {
   useEffect(()=>{
     
     try {
-      commits.getAll().then((response) =>{
-        console.log(response);
-        
+      gitHubInfo.getAllCommits().then((response) =>{
         setcommitsList(response.data)
       })
       

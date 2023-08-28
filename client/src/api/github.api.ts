@@ -1,12 +1,15 @@
-import { func } from "prop-types"
 import { instance } from "./base.api"
 
 
-const endopoint = 'github/allcommits'
+const commitsEndopoint = 'allcommits'
+const profileEndopoint = 'repoinfo'
 
 
-export const commits = {
-    getAll : async  function(){
-        return  await instance.get( endopoint )
+export const gitHubInfo = {
+    getAllCommits : async  function(){
+        return  await instance.get( commitsEndopoint )
+    },
+    getProfileInfo : async  function(){
+        return  await instance.get( profileEndopoint )
     }
 }

@@ -36,7 +36,7 @@ export const FolderList : React.FC<FolderListProps> = ( {items} ) => {
                                 </Typography>
                             } 
                             secondary={
-                                <Typography variant="body2" sx={{ fontSize: 10 , marginTop:'2px', color: '#616060' }}>
+                                <Typography variant="body2" sx={{ fontSize: 11 , marginTop:'2px', color: '#616060' }}>
                                     {`${item.name} commited ${item.date}`}
                                 </Typography>
                             }
