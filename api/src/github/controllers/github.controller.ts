@@ -10,4 +10,9 @@ export class GithubController {
     getAllCommits(@Query('owner') owner?: string, @Query('repo') repo?: string) {
       return this.githubService.getAllCommits(owner, repo);
     }
+
+    @Get('/repoinfo')
+    getRepoInfo(@Query('owner') owner?: string, @Query('repo') repo?: string) {
+      return this.githubService.getRepoInfo(owner, repo);
+    }
 }
